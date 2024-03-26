@@ -24,6 +24,13 @@ $highLimit = 65;
 $age = '';
 $message = '';
 
+/* Santosh version:
+function is_number($number, int $min=0, int $max=100): bool {
+  return ($number >= $min and $number <= $max);
+}
+
+$valid = is_number($age, 16, 65); */
+
 function checkAge () {
   global $age, $lowLimit, $highLimit;
   return ($age >= $lowLimit AND $age <= $highLimit);

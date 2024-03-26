@@ -56,7 +56,6 @@ Step 7: Message can be for example "Password is valid" or if not string
 $message = $isValid ? "Password is valid." : "Password not strong enough.";
 
 # To not diplay message before form submitted:
-    
 if (empty($password)) {
     $message = '';
 }
@@ -65,7 +64,7 @@ if (empty($password)) {
 <?php include 'includes/header.php'; ?>
 
 <form action="validate-password.php" method="post">
-    <p>Password: <input type="password" name="password"></p>
+    <p>Password: <input type="text" name="password"></p>
     <p><input type="submit" value="Submit"></p>
   </form>
 
