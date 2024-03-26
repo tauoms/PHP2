@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else { ?>
 
 <form action="check-for-http-post.php" method="post">
-  <p>Search: <input type="text" name="search"></p>
+  <p>Search: <input type="search" name="search"></p>
   <p><input type="submit" value="Submit"></p>
 </form>
 

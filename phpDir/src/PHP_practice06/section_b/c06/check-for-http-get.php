@@ -24,7 +24,7 @@ if (!empty($_GET['search'])) {
 } else { ?>
 
 <form action="check-for-http-get.php" method="get">
-  <p>Search: <input type="text" name="search"></p>
+  <p>Search: <input type="search" name="search"></p>
   <p><input type="submit" value="Submit"></p>
 </form>
 

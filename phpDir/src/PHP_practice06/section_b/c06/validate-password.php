@@ -65,7 +65,7 @@ if (empty($password)) {
 <?php include 'includes/header.php'; ?>
 
 <form action="validate-password.php" method="post">
-    <p>Password: <input type="text" name="password"></p>
+    <p>Password: <input type="password" name="password"></p>
     <p><input type="submit" value="Submit"></p>
   </form>
 
