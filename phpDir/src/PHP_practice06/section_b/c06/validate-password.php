@@ -16,13 +16,14 @@ Hint: /[A-Z]/ checks uppercase characters
 /[a-z]/ checks lowercase characters
 /[0-9]/ checks numbers 
 
-NOTICE: Does not work with Å Ä Ö */
+NOTICE: Add å ä ö like this: /[A-Z-ÅÄÖ]/
+ */
 
 function checkPassword() {
     global $password;
     if (mb_strlen($password) >= 8 AND 
-        preg_match('/[A-Z]/', $password) AND
-        preg_match('/[a-z]/', $password) AND
+        preg_match('/[A-Z-ÅÄÖ]/', $password) AND
+        preg_match('/[a-z-åäö]/', $password) AND
         preg_match('/[0-9]/', $password)
         ) {
             return true;
