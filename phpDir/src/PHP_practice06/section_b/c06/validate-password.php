@@ -19,8 +19,7 @@ Hint: /[A-Z]/ checks uppercase characters
 NOTICE: Add å ä ö like this: /[A-ZÅÄÖ]/
  */
 
-function checkPassword() {
-    global $password;
+function checkPassword($password) {
     if (mb_strlen($password) >= 8 AND 
         preg_match('/[A-ZÅÄÖ]/', $password) AND
         preg_match('/[a-zåäö]/', $password) AND
@@ -43,7 +42,7 @@ and the result can be stored in some variable e.g. $valid */
 $isValid = false;
 
 if (!empty($_POST['password'])) {
-    $isValid = checkPassword();
+    $isValid = checkPassword($password);
 }
 
 /*
