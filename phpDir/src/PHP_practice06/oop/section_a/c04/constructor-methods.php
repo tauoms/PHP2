@@ -62,11 +62,14 @@ Step 9: In the final row of the table, previous step is repeated using different
 ?>
 
 <?php include 'includes/header.php'; ?>
-<h2>Account Balances</h2>
+
 <p class="accounts">Checking Account:</p>
 <h3><?= $checking_account->number ?></h3>
 <p class="accounts">Savings Account:</p>
 <h3><?= $savings_account->number ?></h3>
+
+<h2>Account Balances</h2>
+
 
 <table>
   <tr>
@@ -77,20 +80,20 @@ Step 9: In the final row of the table, previous step is repeated using different
   </tr>
   <tr>
     <td>23 June</td>
-    <td><?= $checking_account->balance . " €" ?></td>
-    <td><?= $savings_account->balance . " €" ?></td>
+    <td><?= number_format($checking_account->balance, 2, ',', ' ') . " €" ?></td>
+    <td><?= number_format($savings_account->balance, 2, ',', ' ') . " €" ?></td>
 
   </tr>
   <tr>
     <td>24 June</td>
-    <td><?= $checking_account->deposit(340) . " €" ?></td>
-    <td><?= $savings_account->withdraw(2040) . " €" ?></td>
+    <td><?= number_format($checking_account->deposit(340), 2, ',', ' ') . " €" ?></td>
+    <td><?= number_format($savings_account->withdraw(2040), 2, ',', ' ') . " €" ?></td>
 
   </tr>
   <tr>
     <td>25 June</td>
-    <td><?= $checking_account->withdraw(1000) . " €" ?></td>
-    <td><?= $savings_account->deposit(40) . " €" ?></td>
+    <td><?= number_format($checking_account->withdraw(1000), 2, ',', ' ') . " €" ?></td>
+    <td><?= number_format($savings_account->deposit(40), 2, ',', ' ') . " €" ?></td>
   </tr>
 </table>
 <?php include 'includes/footer.php'; ?>
