@@ -38,7 +38,7 @@
 
     /* Step 6: Call the method ShowAll */
 
-    echo $pitbull->showAll();
+    $pitbull->showAll();
 
 		?>
 
