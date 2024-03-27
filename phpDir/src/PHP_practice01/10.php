@@ -40,10 +40,26 @@
 
     $pitbull->showAll();
 
-		?>
+		
 
+  /* Kajol construct version:
+  
+  class Dog {
+    public $eye_color;
+    public $nose;
+    public $fur_color;
+    
+    public function __construct($eye_color, $nose, $fur_color) {
+        echo $this->$eye_color = $eye_color . '<br>';
+        echo $this->$nose = $nose . '<br>';
+        echo $this->$fur_color = $fur_color . '<br>';
+    }
 
+  }
+  $shaperd = new Dog('black', 'black', 'brown');
 
+  */
+  ?>
 
 
   </article>
