@@ -63,6 +63,11 @@ Step 9: In the final row of the table, previous step is repeated using different
 
 <?php include 'includes/header.php'; ?>
 <h2>Account Balances</h2>
+<p class="accounts">Checking Account:</p>
+<h3><?= $checking_account->number ?></h3>
+<p class="accounts">Savings Account:</p>
+<h3><?= $savings_account->number ?></h3>
+
 <table>
   <tr>
     <th>Date</th>

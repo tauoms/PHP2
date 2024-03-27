@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -6,8 +7,8 @@ html, body {
 
 body {
   background: #112c44;
-	color: #fff; 
-  font-family: 'Roboto Condensed', sans-serif;
+  color: #fff;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 header {
@@ -32,7 +33,8 @@ h1 {
   top: -0.6em;
   font-size: 2.4em;
   padding: 0 0 0 0.5em;
-  margin: 0;}
+  margin: 0;
+}
 
 h2 {
   color: #b5b6c1;
@@ -53,7 +55,8 @@ table {
   border-collapse: collapse;
 }
 
-td, th {
+td,
+th {
   padding: 0.3em 2em 0.3em 0;
 }
 
@@ -84,4 +87,12 @@ p {
 
 td.overdrawn {
   color: #fca905;
+}
+
+.accounts {
+  margin-bottom: 0;
+}
+
+h3 {
+  margin-top: 0.2rem;
 }
