@@ -27,6 +27,15 @@ if ($conn->connect_error) {
     echo "Connected to MySQL server succesfully!";
 }
 
+// Create the records inside db
+$query = "INSERT INTO users(username, password)";
+$query .= "VALUES('$user', '$pass')";
+
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die('Query insertation failed');
+}
 ?>
 
 <form action="login.php" method="post">
