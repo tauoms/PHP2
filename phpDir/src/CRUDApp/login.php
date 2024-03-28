@@ -20,7 +20,7 @@ $dbuser = 'root';
 $dbpass = 'lionPass';
 
 // Check MySQL connection satus
-$conn = new mysqli($host, $dbuser, $dbpass); // MySQL interface, connection between PHP and mySQL db
+$conn = new mysqli($host, $dbuser, $dbpass, $dbname); // MySQL interface, connection between PHP and mySQL db
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
