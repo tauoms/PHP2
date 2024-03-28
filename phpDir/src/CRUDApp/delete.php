@@ -9,8 +9,6 @@ if (!$result) {
 
 <?php
 if (isset($_POST['submit'])) {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
   $id = $_POST['id'];
 
   //Update the records in db
@@ -37,10 +35,6 @@ if (isset($_POST['submit'])) {
 <body>
   <form action="delete.php" method="post">
 
-    <label for="username"> Username </label>
-    <input type="text" name="username">
-    <label for="password"> Password </label>
-    <input type="password" name="password">
     <select name="id" id="">
       <?php
       while ($row = mysqli_fetch_assoc($result)) {
