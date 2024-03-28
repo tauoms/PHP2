@@ -27,22 +27,34 @@ if ($conn->connect_error) {
     echo "Connected to MySQL server succesfully!";
 }
 
-// Create the records inside db
-$query = "INSERT INTO users(username, password)";
-$query .= "VALUES('$user', '$pass')";
+// CREATE the records inside db
+// $query = "INSERT INTO users(username, password)"; // This is not PHP, but SQL
+// $query .= "VALUES('$user', '$pass')";
+
+$query = "SELECT * FROM users"; //Select everything from users table
+
 
 $result = mysqli_query($conn, $query);
 
 if (!$result) {
-    die('Query insertation failed');
+    die('Reading db records failed');
+}
+
+// READ rows from db
+while ($row = mysqli_fetch_assoc($result)) { // Fetch arrays from db
+    ?>
+    <pre>
+        <?php print_r($row); ?>
+    </pre>
+    <?php
 }
 ?>
 
-<form action="login.php" method="post">
+<!-- <form action="login.php" method="post">
     <label for="username">Username: </label>
     <input type="text" name="username">
     <label for="password">Password: </label>
     <input type="password" name="password">
     <input type="submit" name="submit" value="Submit">
-</form>
+</form> -->
 
