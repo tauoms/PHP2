@@ -1,6 +1,6 @@
 <?php include 'db.php';
 
-$query = "SELECT * FROM Users";
+$query = "SELECT * FROM users";
 $result = mysqli_query($conn, $query);
 if (!$result) {
   die('Query failed');
@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
   $id = $_POST['id'];
 
   //Update the records in db
-  $query = "UPDATE Users SET ";
+  $query = "UPDATE users SET ";
   $query .= "username = '$username', ";
   $query .= "password = '$password' ";
   $query .= "WHERE id = $id";
