@@ -2,7 +2,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: antiquewhite;
   background: linear-gradient(
     0deg,
     rgb(189, 161, 123) 0%,
