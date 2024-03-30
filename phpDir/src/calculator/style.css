@@ -1,0 +1,19 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: antiquewhite;
+  height: 100vh;
+}
+
+.calculator {
+  background-color: rgb(118, 129, 129);
+  color: azure;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+input {
+  display: block;
+  margin-top: 20px;
+}
