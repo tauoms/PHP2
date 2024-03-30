@@ -4,6 +4,7 @@ body {
   align-items: center;
   background-color: antiquewhite;
   height: 100vh;
+  font-family: "Source Code Pro", monospace;
 }
 
 .calculator {
@@ -15,5 +16,5 @@ body {
 
 input {
   display: block;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
