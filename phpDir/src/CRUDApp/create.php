@@ -59,14 +59,25 @@ if(isset($_POST['submit'])) {
 
 $displayQuery = "SELECT * FROM users"; //Select everything from users table
 ?>
-
-<form action="create.php" method="post">
-    <label for="username">Username: </label>
-    <input type="text" name="username">
-    <label for="password">Password: </label>
-    <input type="password" name="password">
-    <input type="submit" name="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CRUDApp</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>User Management</h1>
+        <form action="create.php" method="post">
+            <label for="username">Username: </label>
+            <input type="text" name="username">
+            <label for="password">Password: </label>
+            <input type="password" name="password">
+            <input type="submit" name="submit" value="Submit">
+        </form>
+    </body>
+</html>
 
 <?php
 

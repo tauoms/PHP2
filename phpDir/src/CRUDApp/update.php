@@ -1,9 +1,5 @@
 <?php 
 
-if (isset($_POST['submit'])) {
-  header('Location: login.php');
-}
-
 include 'db.php';
 
 $query = "SELECT * FROM users";
