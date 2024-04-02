@@ -1,23 +1,7 @@
-<?php
+<?php include 'db.php';
 
 $user = '';
 $pass = '';
-
-$host = 'db';
-
-// database username
-$dbname = 'loginapp';
-$dbuser = 'root';
-$dbpass = 'lionPass';
-
-// Check MySQL connection satus
-$conn = new mysqli($host, $dbuser, $dbpass, $dbname); // MySQL interface, connection between PHP and mySQL db
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-// else {
-//     echo "Connected to MySQL server succesfully! ";
-// }
 
 if(isset($_POST['submit'])) {
     // echo "Data received";
@@ -80,9 +64,7 @@ $displayQuery = "SELECT * FROM users"; //Select everything from users table
                 <input type="submit" name="submit" value="Submit">
             </form>
         </div>
-    </body>
-</html>
-
+  
 <?php
 
 $result = mysqli_query($conn, $displayQuery);
@@ -101,16 +83,19 @@ if (!$result) {
 <?php
 // READ rows from db
 while ($row = mysqli_fetch_assoc($result)) { // Fetch arrays from db
-    ?>
-    <tr>
-        <td><?= $row['id'] ?></td>
-        <td><?= $row['username'] ?></td>
-        <td><?= $row['password'] ?></td>
-        <td>actions here</td>
-    </tr>
-    <?php
-}
 ?>
-</table>
+        <tr data-id="<?= $row['id'] ?>">
+            <td><?= $row['id'] ?></td>
+            <td><?= $row['username'] ?></td>
+            <td><?= $row['password'] ?></td>
+            <td><button onclick="toggleEditMode()">Edit</button><button onclick="deleteRow(<?= $row['id'] ?>)">Delete</button></td>
+        </tr>
+        <?php
+    }
+    ?>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
 
 
