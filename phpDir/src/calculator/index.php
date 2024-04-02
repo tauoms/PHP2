@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
         <h1>Calculator</h1>
         <form action="index.php" method="post">
             <label for="value1">Value 1: </label>
-            <input type="text" name="value1" />
+            <input type="number" step="0.01" name="value1" id="value1" />
             <select name="operator" id="operator">
                 <option value="addition">+ Add</option>
                 <option value="subtraction">- Subtract</option>
@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
             </select>
             <br><br>
             <label for="value2">Value 2: </label>
-            <input type="text" name="value2" />
+            <input type="number" step="0.01" name="value2" id="value2" />
             
             <input type="submit" name="submit" value=" = ">
         </form>

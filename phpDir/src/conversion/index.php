@@ -61,8 +61,8 @@ if (isset($_POST['submit'])) {
         <h1>Unit Converter</h1>
         <form action="index.php" method="post">
             <label for="value1">Input value: </label>
-            <input type="text" name="value1" />
-            <select name="conversion" id="conversion">
+            <input type="number" step="0.01" name="value1" />
+            <select class="cselect" name="conversion" id="conversion">
                 <option value="celsiustofahrenheit">Celsius to Fahrenheit</option>
                 <option value="celsiustokelvin">Celsius to Kelvin</option>
                 <option value="kmhtoms">km/h to m/s</option>

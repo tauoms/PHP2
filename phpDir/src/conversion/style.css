@@ -24,6 +24,17 @@ input {
   margin-bottom: 20px;
 }
 
-input[type="text"] {
+input[type="number"] {
   width: 60px;
+  padding: 4px;
+}
+
+input[type="submit"] {
+  padding: 8px;
+  border: 0;
+  border-radius: 8px;
+}
+
+.cselect {
+  padding: 8px;
 }
