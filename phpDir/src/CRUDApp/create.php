@@ -19,8 +19,6 @@ if ($conn->connect_error) {
 //     echo "Connected to MySQL server succesfully! ";
 // }
 
-
-
 if(isset($_POST['submit'])) {
     // echo "Data received";
     $user = $_POST['username'];

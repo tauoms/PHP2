@@ -11,24 +11,46 @@ $result = mysqli_query($conn, $query);
 if (!$result) {
   die('Query failed');
 }
-?>
 
-<?php
 if (isset($_POST['submit'])) {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+  $user = $_POST['username'];
+  $pass = $_POST['password'];
   $id = $_POST['id'];
 
   //Update the records in db
-  $query = "UPDATE users SET ";
-  $query .= "username = '$username', ";
-  $query .= "password = '$password' ";
-  $query .= "WHERE id = $id";
+  // $query = "UPDATE users SET ";
+  // $query .= "username = '$user', ";
+  // $query .= "password = '$pass' ";
+  // $query .= "WHERE id = $id";
 
-  $result = mysqli_query($conn, $query);
-  if (!$result) {
-    die("Update query failed" . mysqli_error($conn));
-  } 
+  if(!empty($user) && !empty($pass)) {
+    // Prepare INSERT statement with placeholders
+    $stmt = $conn->prepare("UPDATE users SET username=?, password=? WHERE id=?");
+    ;
+    // Bind the variables to the prepared statement as strings
+    $stmt->bind_param("ssi", $user, $pass, $id);
+    // Execute the prepared statement and check the result
+
+    if ($stmt->execute()) {
+        // Redirect to the same page to prevent form resubmission
+        header("Location: " . $_SERVER["PHP_SELF"]);
+
+        exit; // Make sure to stop the script execution after the redirect
+
+    } else {
+        // Handle errors during execution
+        die('Query updating failed');
+    }
+    // Close the prepared statement
+    $stmt->close();
+
+
+  // $result = mysqli_query($conn, $query);
+  // if (!$result) {
+  //   die("Update query failed" . mysqli_error($conn));
+  // } 
+
+  }
 }
 
 ?>

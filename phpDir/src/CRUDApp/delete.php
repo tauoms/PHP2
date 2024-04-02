@@ -5,15 +5,26 @@ $result = mysqli_query($conn, $query);
 if (!$result) {
   die('Query failed');
 }
-?>
 
-<?php
+
 if (isset($_POST['submit'])) {
   $id = $_POST['id'];
 
-  //Update the records in db
-  $query = "DELETE FROM users WHERE id = $id";
+  //Delete the record in db
+  // $query = "DELETE FROM users WHERE id = $id";
+  $stmt = $conn->prepare("DELETE FROM users WHERE id= ?");
+  $stmt->bind_param("i", $id);
 
+  if ($stmt->execute()) {
+    header("Location: " . $_SERVER["PHP_SELF"]);
+    exit;
+  } else {
+    // Handle errors during execution
+    die('Query deleting failed');
+}
+// Close the prepared statement
+$stmt->close();
+  
   $result = mysqli_query($conn, $query);
   if (!$result) {
     die("Deletion query failed" . mysqli_error($conn));
