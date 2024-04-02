@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:900|Raleway:500,700");
 
-html, body {
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
   height: 100%;
 }
 
@@ -51,4 +56,8 @@ p {
   position: absolute;
   top: 1em;
   right: 1em;
+}
+
+.login {
+  margin: 20px 20px;
 }

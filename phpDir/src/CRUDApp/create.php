@@ -65,17 +65,21 @@ $displayQuery = "SELECT * FROM users"; //Select everything from users table
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CRUDApp</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
         <h1>User Management</h1>
-        <form action="create.php" method="post">
-            <label for="username">Username: </label>
-            <input type="text" name="username">
-            <label for="password">Password: </label>
-            <input type="password" name="password">
-            <input type="submit" name="submit" value="Submit">
-        </form>
+        <div class="login">
+            <form action="create.php" method="post">
+                <label for="username">Username: </label>
+                <input type="text" name="username" id="username">
+                <br>
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password">
+                <br>
+                <input type="submit" name="submit" value="Submit">
+            </form>
+        </div>
     </body>
 </html>
 
