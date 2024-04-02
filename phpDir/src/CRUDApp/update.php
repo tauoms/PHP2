@@ -1,4 +1,10 @@
-<?php include 'db.php';
+<?php 
+
+if (isset($_POST['submit'])) {
+  header('Location: login.php');
+}
+
+include 'db.php';
 
 $query = "SELECT * FROM users";
 $result = mysqli_query($conn, $query);
@@ -22,7 +28,7 @@ if (isset($_POST['submit'])) {
   $result = mysqli_query($conn, $query);
   if (!$result) {
     die("Update query failed" . mysqli_error($conn));
-  }
+  } 
 }
 
 ?>
