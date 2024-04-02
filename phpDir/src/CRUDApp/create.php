@@ -14,9 +14,10 @@ $dbpass = 'lionPass';
 $conn = new mysqli($host, $dbuser, $dbpass, $dbname); // MySQL interface, connection between PHP and mySQL db
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} else {
-    echo "Connected to MySQL server succesfully! ";
-}
+} 
+// else {
+//     echo "Connected to MySQL server succesfully! ";
+// }
 
 
 
@@ -24,17 +25,36 @@ if(isset($_POST['submit'])) {
     // echo "Data received";
     $user = $_POST['username'];
     $pass = $_POST['password'];
+
     // CREATE the records inside db
-    $insertQuery = "INSERT INTO users(username, password)"; // This is not PHP, but SQL
-    $insertQuery .= "VALUES('$user', '$pass')";
+    // $insertQuery = "INSERT INTO users(username, password)"; // This is not PHP, but SQL
+    // $insertQuery .= "VALUES('$user', '$pass')";
+    // mysqli_query($conn, $insertQuery);
+
     if(!empty($user) && !empty($pass)) {
-        mysqli_query($conn, $insertQuery);
+        // Prepare INSERT statement with placeholders
+        $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+        // Bind the variables to the prepared statement as strings
+        $stmt->bind_param("ss", $user, $pass);
+        // Execute the prepared statement and check the result
+
+        if ($stmt->execute()) {
+            // Redirect to the same page to prevent form resubmission
+            header("Location: " . $_SERVER["PHP_SELF"]);
+    
+            exit; // Make sure to stop the script execution after the redirect
+    
+        } else {
+            // Handle errors during execution
+            die('Query insertion failed');
+        }
+        // Close the prepared statement
+        $stmt->close();
+
     } else {
         echo "Username and password fields can not be blank. ";
     }
 }
-
-// Validate form inputs
 
 
 // Display db content
