@@ -3,19 +3,6 @@
 $user = '';
 $pass = '';
 
-if(isset($_POST['submit'])) {
-    // echo "Data received";
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
-}
-
-// Validate form inputs
-if($user && $pass) {
-    echo $user . " " . $pass;
-} else {
-    echo "Username and password fields can not be blank. ";
-}
-
 $host = 'db';
 
 // database username
@@ -28,12 +15,29 @@ $conn = new mysqli($host, $dbuser, $dbpass, $dbname); // MySQL interface, connec
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
-    echo "Connected to MySQL server succesfully!";
+    echo "Connected to MySQL server succesfully! ";
 }
 
-// CREATE the records inside db
-$query = "INSERT INTO users(username, password)"; // This is not PHP, but SQL
-$query .= "VALUES('$user', '$pass')";
+
+
+if(isset($_POST['submit'])) {
+    // echo "Data received";
+    $user = $_POST['username'];
+    $pass = $_POST['password'];
+    // CREATE the records inside db
+    $insertQuery = "INSERT INTO users(username, password)"; // This is not PHP, but SQL
+    $insertQuery .= "VALUES('$user', '$pass')";
+    if(!empty($user) && !empty($pass)) {
+        mysqli_query($conn, $insertQuery);
+    } else {
+        echo "Username and password fields can not be blank. ";
+    }
+}
+
+// Validate form inputs
+
+
+// Display db content
 
 $displayQuery = "SELECT * FROM users"; //Select everything from users table
 ?>
