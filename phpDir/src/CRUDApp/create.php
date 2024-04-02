@@ -90,16 +90,27 @@ $result = mysqli_query($conn, $displayQuery);
 if (!$result) {
     die('Reading db records failed');
 }
-
+?>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Actions</th>
+    </tr>
+<?php
 // READ rows from db
 while ($row = mysqli_fetch_assoc($result)) { // Fetch arrays from db
     ?>
-    <pre>
-        <?php print_r($row); ?>
-    </pre>
+    <tr>
+        <td><?= $row['id'] ?></td>
+        <td><?= $row['username'] ?></td>
+        <td><?= $row['password'] ?></td>
+        <td>actions here</td>
+    </tr>
     <?php
 }
 ?>
-
+</table>
 
 
