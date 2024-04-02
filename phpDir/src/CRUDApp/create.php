@@ -1,4 +1,8 @@
 <?php
+
+$user = '';
+$pass = '';
+
 if(isset($_POST['submit'])) {
     // echo "Data received";
     $user = $_POST['username'];
@@ -28,13 +32,23 @@ if ($conn->connect_error) {
 }
 
 // CREATE the records inside db
-// $query = "INSERT INTO users(username, password)"; // This is not PHP, but SQL
-// $query .= "VALUES('$user', '$pass')";
+$query = "INSERT INTO users(username, password)"; // This is not PHP, but SQL
+$query .= "VALUES('$user', '$pass')";
 
-$query = "SELECT * FROM users"; //Select everything from users table
+$displayQuery = "SELECT * FROM users"; //Select everything from users table
+?>
 
+<form action="create.php" method="post">
+    <label for="username">Username: </label>
+    <input type="text" name="username">
+    <label for="password">Password: </label>
+    <input type="password" name="password">
+    <input type="submit" name="submit" value="Submit">
+</form>
 
-$result = mysqli_query($conn, $query);
+<?php
+
+$result = mysqli_query($conn, $displayQuery);
 
 if (!$result) {
     die('Reading db records failed');
@@ -50,11 +64,5 @@ while ($row = mysqli_fetch_assoc($result)) { // Fetch arrays from db
 }
 ?>
 
-<!-- <form action="login.php" method="post">
-    <label for="username">Username: </label>
-    <input type="text" name="username">
-    <label for="password">Password: </label>
-    <input type="password" name="password">
-    <input type="submit" name="submit" value="Submit">
-</form> -->
+
 
