@@ -14,10 +14,12 @@ if(isset($_POST['createuser'])) {
     // mysqli_query($conn, $insertQuery);
 
     if(!empty($user) && !empty($pass)) {
+        // Create hashed password
+        $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
         // Prepare INSERT statement with placeholders
         $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
         // Bind the variables to the prepared statement as strings
-        $stmt->bind_param("ss", $user, $pass);
+        $stmt->bind_param("ss", $user, $hashedPass);
         // Execute the prepared statement and check the result
         if ($stmt->execute()) {
             // Redirect to the same page to prevent form resubmission
