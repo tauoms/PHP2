@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #b4bbbe;
+  font-family: "Rubik", sans-serif;
+  color: #3d4a4b;
+}
+
+a {
+  color: #808d9a;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #a5b5c6;
+}
+
+#container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  /* border: 2px solid #808d9a; */
+}
+
+header {
+  background-color: #808d9a;
+  background: linear-gradient(0deg, #446aa7 0%, #b2cbcb 100%);
+  color: #1f1f1f;
+  padding: 60px;
+  text-align: center;
+  border: 1px solid #808d9a;
+}
+
+header h1 {
+  font-size: 50px;
+  color: #35454c;
+}
+
+#main-navi {
+  background-color: #ebeef0;
+  border: 1px solid #808d9a;
+  border-top: none;
+  padding: 10px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#main-navi ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  margin: 0px;
+}
+
+#main-navi ul li {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+main {
+  padding: 20px;
+  padding-top: 20px;
+}
+
+main h2 {
+  margin-bottom: 20px;
+}
+
+.book {
+  background-color: #ebeef0;
+  border: 1px solid #808d9a;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.book h3 {
+  padding: 0px;
+  margin: 0px;
+}
+
+.bookmark {
+  color: #e8c708;
+  text-decoration: none;
+  font-size: 2rem;
+  float: right;
+}
+
+.publishing-info {
+  color: #808d9a;
+  margin-bottom: 10px;
+}
+
+label {
+  display: inline-block;
+  width: 80px;
+}
+
+.deleteform {
+  float: right;
+}
+
+.editform {
+  float: right;
+}
+
+.credentials {
+  color: #696868;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+input {
+  padding: 3px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  border: 1px solid #808d9a;
+}
+
+input[type="submit"] {
+  padding: 6px;
+  margin-right: 6px;
+}
+
+select {
+  padding: 4px;
+  border-radius: 8px;
+}
+
+input[name="deletebook"] {
+  background-color: #ee8282;
+}
+
+input[name="restorebackup"] {
+  background-color: #a4e89d;
+}
+
+.message {
+  padding: 10px;
+  font-size: large;
+  font-weight: 600;
+}
+
+.restoremessage {
+  font-size: x-small;
+}
