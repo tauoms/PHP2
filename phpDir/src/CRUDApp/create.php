@@ -138,4 +138,6 @@ while ($row = mysqli_fetch_assoc($result)) { // Fetch arrays from db
 </body>
 </html>
 
-
+<?php
+$conn->close();
+?>
