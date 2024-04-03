@@ -36,7 +36,7 @@ if(isset($_POST['submit'])) {
     }
 }
 
-// Delete record
+// DELETE record
 if(isset($_POST['delete_id'])) {
     $id = $_POST['delete_id'];
 
@@ -83,8 +83,8 @@ if (isset($_POST['edit_id'])) {
       $stmt->close();
     }
 }
-// Display db content
 
+// Display db content
 $displayQuery = "SELECT * FROM users"; //Select everything from users table
 $result = mysqli_query($conn, $displayQuery);
 
@@ -127,7 +127,7 @@ while ($row = mysqli_fetch_assoc($result)) { // Fetch arrays from db
         <tr data-id="<?= $row['id'] ?>">
             <td><?= $row['id'] ?></td>
             <td><?= $row['username'] ?></td>
-            <td><?= $row['password'] ?></td>
+            <td>••••••••</td>
             <td><button onclick="toggleEditMode(this.parentNode.parentNode, true)">Edit</button><button onclick="deleteRow(<?= $row['id'] ?>)">Delete</button></td>
         </tr>
         <?php

@@ -54,7 +54,8 @@ function toggleEditMode(row, isEditing) {
  * @param {number} id - The ID of the user to delete.
  */
 function deleteRow(id) {
-  if (confirm('Are you sure you want to delete?')) {
+  // const stringID = String(id);
+  if (confirm(`Are you sure you want to delete ID #${id}?`)) {
     const form = createForm('delete_id', id);
     document.body.appendChild(form);
     form.submit();
