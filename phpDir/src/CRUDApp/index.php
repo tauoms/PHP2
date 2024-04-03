@@ -13,15 +13,15 @@ include 'create.php';
     </head>
     <body>
         <h1>User Management</h1>
-        <div class="login">
-            <form action="create.php" method="post">
+        <div>
+            <form action="index.php" method="post">
                 <label for="username">Username: </label>
                 <input type="text" name="username" id="username">
                 <br>
                 <label for="password">Password: </label>
                 <input type="password" name="password" id="password">
                 <br>
-                <input type="submit" name="submit" value="Submit">
+                <input type="submit"  name="createuser" value="Submit">
             </form>
         </div>
 <table>
@@ -32,6 +32,13 @@ include 'create.php';
         <th>Actions</th>
     </tr>
 <?php
+// Display db content
+$displayQuery = "SELECT * FROM users"; //Select everything from users table
+$result = mysqli_query($conn, $displayQuery);
+
+if (!$result) {
+    die('Reading db records failed');
+}
 // READ rows from db
 while ($row = mysqli_fetch_assoc($result)) { // Fetch arrays from db
 ?>

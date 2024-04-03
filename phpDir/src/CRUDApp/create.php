@@ -4,7 +4,7 @@
 // $pass = '';
 
 // CREATE record
-if(isset($_POST['submit'])) {
+if(isset($_POST['createuser'])) {
     // echo "Data received";
     $user = $_POST['username'];
     $pass = $_POST['password'];
@@ -84,12 +84,6 @@ if (isset($_POST['edit_id'])) {
     }
 }
 
-// Display db content
-$displayQuery = "SELECT * FROM users"; //Select everything from users table
-$result = mysqli_query($conn, $displayQuery);
 
-if (!$result) {
-    die('Reading db records failed');
-}
 ?>
 
