@@ -44,7 +44,7 @@ while ($row = mysqli_fetch_assoc($result)) { // Fetch arrays from db
 ?>
         <tr data-id="<?= $row['id'] ?>">
             <td><?= $row['id'] ?></td>
-            <td><?= $row['username'] ?></td>
+            <td><?= htmlspecialchars($row['username']) ?></td>
             <td>••••••••</td>
             <td><button onclick="toggleEditMode(this.parentNode.parentNode, true)">Edit</button><button onclick="deleteRow(<?= $row['id'] ?>)">Delete</button></td>
         </tr>
