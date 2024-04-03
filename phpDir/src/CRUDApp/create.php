@@ -1,8 +1,9 @@
 <?php include 'db.php';
 
-$user = '';
-$pass = '';
+// $user = '';
+// $pass = '';
 
+// CREATE record
 if(isset($_POST['submit'])) {
     // echo "Data received";
     $user = $_POST['username'];
@@ -19,13 +20,10 @@ if(isset($_POST['submit'])) {
         // Bind the variables to the prepared statement as strings
         $stmt->bind_param("ss", $user, $pass);
         // Execute the prepared statement and check the result
-
         if ($stmt->execute()) {
             // Redirect to the same page to prevent form resubmission
             header("Location: " . $_SERVER["PHP_SELF"]);
-    
             exit; // Make sure to stop the script execution after the redirect
-    
         } else {
             // Handle errors during execution
             die('Query insertion failed');
@@ -36,6 +34,29 @@ if(isset($_POST['submit'])) {
     } else {
         echo "Username and password fields can not be blank. ";
     }
+}
+
+// Delete record
+if(isset($_POST['delete_id'])) {
+    $id = $_POST['delete_id'];
+
+  $stmt = $conn->prepare("DELETE FROM users WHERE id= ?");
+  $stmt->bind_param("i", $id);
+
+  if ($stmt->execute()) {
+    header("Location: " . $_SERVER["PHP_SELF"]);
+    exit;
+  } else {
+    // Handle errors during execution
+    die('Query deleting failed');
+}
+// Close the prepared statement
+$stmt->close();
+  
+  $result = mysqli_query($conn, $query);
+  if (!$result) {
+    die("Deletion query failed" . mysqli_error($conn));
+  }
 }
 
 
