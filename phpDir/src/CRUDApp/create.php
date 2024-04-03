@@ -1,7 +1,6 @@
 <?php include 'db.php';
 
-// $user = '';
-// $pass = '';
+session_start();
 
 // CREATE record
 if(isset($_POST['createuser'])) {
