@@ -55,11 +55,11 @@ $stmt->close();
   
 }
 
-// UPDATE record:
-if (isset($_POST['submit'])) {
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
-    $id = $_POST['id'];
+// UPDATE / EDIT record:
+if (isset($_POST['edit_id'])) {
+    $user = $_POST['edit_username'];
+    $pass = $_POST['edit_password'];
+    $id = $_POST['edit_id'];
   
     if(!empty($user) && !empty($pass)) {
       // Prepare INSERT statement with placeholders
