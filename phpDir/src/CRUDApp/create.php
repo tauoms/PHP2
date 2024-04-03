@@ -53,16 +53,44 @@ if(isset($_POST['delete_id'])) {
 // Close the prepared statement
 $stmt->close();
   
-  $result = mysqli_query($conn, $query);
-  if (!$result) {
-    die("Deletion query failed" . mysqli_error($conn));
-  }
 }
 
-
+// UPDATE record:
+if (isset($_POST['submit'])) {
+    $user = $_POST['username'];
+    $pass = $_POST['password'];
+    $id = $_POST['id'];
+  
+    if(!empty($user) && !empty($pass)) {
+      // Prepare INSERT statement with placeholders
+      $stmt = $conn->prepare("UPDATE users SET username=?, password=? WHERE id=?");
+      ;
+      // Bind the variables to the prepared statement as strings
+      $stmt->bind_param("ssi", $user, $pass, $id);
+      // Execute the prepared statement and check the result
+  
+      if ($stmt->execute()) {
+          // Redirect to the same page to prevent form resubmission
+          header("Location: " . $_SERVER["PHP_SELF"]);
+  
+          exit; // Make sure to stop the script execution after the redirect
+  
+      } else {
+          // Handle errors during execution
+          die('Query updating failed');
+      }
+      // Close the prepared statement
+      $stmt->close();
+    }
+}
 // Display db content
 
 $displayQuery = "SELECT * FROM users"; //Select everything from users table
+$result = mysqli_query($conn, $displayQuery);
+
+if (!$result) {
+    die('Reading db records failed');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,15 +113,6 @@ $displayQuery = "SELECT * FROM users"; //Select everything from users table
                 <input type="submit" name="submit" value="Submit">
             </form>
         </div>
-  
-<?php
-
-$result = mysqli_query($conn, $displayQuery);
-
-if (!$result) {
-    die('Reading db records failed');
-}
-?>
 <table>
     <tr>
         <th>ID</th>
@@ -109,7 +128,7 @@ while ($row = mysqli_fetch_assoc($result)) { // Fetch arrays from db
             <td><?= $row['id'] ?></td>
             <td><?= $row['username'] ?></td>
             <td><?= $row['password'] ?></td>
-            <td><button onclick="toggleEditMode()">Edit</button><button onclick="deleteRow(<?= $row['id'] ?>)">Delete</button></td>
+            <td><button onclick="toggleEditMode(this.parentNode.parentNode, true)">Edit</button><button onclick="deleteRow(<?= $row['id'] ?>)">Delete</button></td>
         </tr>
         <?php
     }
