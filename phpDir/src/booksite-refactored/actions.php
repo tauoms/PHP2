@@ -56,7 +56,7 @@ $stmt->close();
 }
 
 // Redirect back
-header("Location: " . $_SERVER["PHP_SELF"]);
+header("Location: " . $_SERVER['HTTP_REFERER']);
 exit;
 }
 
