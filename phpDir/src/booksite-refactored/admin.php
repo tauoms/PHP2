@@ -1,22 +1,20 @@
-<?php
+<?php include 'actions.php';
     // If the user is not logged in, redirect them back to login.php.
 
     session_start();
 
-    $restoremessage = '';
+    // $restoremessage = '';
 
     if(!isset($_SESSION["login"])) {
         header("Location: login.php");
         exit;
     }
 
-    if(!empty($_SESSION["restoremessage"])){
-        $restoremessage = $_SESSION["restoremessage"];
-        $_SESSION["restoremessage"] = '';
-    }
+    // if(!empty($_SESSION["restoremessage"])){
+    //     $restoremessage = $_SESSION["restoremessage"];
+    //     $_SESSION["restoremessage"] = '';
+    // }
 
-    $json = file_get_contents("books.json");
-    $books = json_decode($json, true);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,13 +42,12 @@
         </nav>
         <main>
             <h2>All Books</h2>
-            <form class="restorebackup" action="restorebackup.php" method="post">
+            <!-- <form class="restorebackup" action="restorebackup.php" method="post">
                     <input type="submit" name="restorebackup" value="Restore Backup">
-                    <span><?php print $restoremessage ?></span>
 
                     </form>
                     <p class="restoremessage">(Revert back to original book list)</p>
-                    <br>
+                    <br> -->
             <?php
                 // This is almost identical to booksite.php (minus the genres). Make sure to print the correct id to the delete form.
                 foreach ($books as $book) {

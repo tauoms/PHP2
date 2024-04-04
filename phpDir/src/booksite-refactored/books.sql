@@ -28,5 +28,4 @@ INSERT INTO books (id, title, description, author, publishing_year, genre) VALUE
 	('17', 'His Dark Materials: The Golden Compass', 'Philip Pullman\'s fantasy novel follows Lyra Belacqua as she embarks on a journey to the Arctic to rescue kidnapped children and uncover a sinister plot.', 'Philip Pullman', '1995', 'Fantasy'),
 	('18', 'The Name of the Wind', 'Patrick Rothfuss\' fantasy novel follows the life of Kvothe, a gifted young man who grows up to become the most notorious wizard his world has ever seen.', 'Patrick Rothfuss', '2007', 'Fantasy'),
 	('19', 'The Da Vinci Code', 'Dan Brown\'s thriller follows symbologist Robert Langdon as he investigates a murder in the Louvre and uncovers a centuries-old conspiracy.', 'Dan Brown', '2003', 'Mystery'),
-	('20', 'Memoirs of a Geisha', 'Arthur Golden\'s historical novel tells the story of Sayuri, a young Japanese girl who trains to become a geisha in pre-World War II Japan.', 'Arthur Golden', '1997', 'Historical Fiction'),
-	('21', 'Testing Book 101', 'Testing add book with historical fiction genre wohooo', 'Adel', '2024', 'Historical Fiction');
+	('20', 'Memoirs of a Geisha', 'Arthur Golden\'s historical novel tells the story of Sayuri, a young Japanese girl who trains to become a geisha in pre-World War II Japan.', 'Arthur Golden', '1997', 'Historical Fiction');
