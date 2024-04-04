@@ -4,7 +4,7 @@ Site actions using repared statements.
 */
 
 // Start or resume a session
-session_start();
+// session_start();
 
 // Include the database connection file
 require_once 'db.php';
@@ -23,12 +23,12 @@ $stmt->execute();
 $stmt->close();
 }
 
-// If delete_id is set, delete the specified user
-if (isset($_POST["delete_id"])) {
+// If deletebook is set, delete the specified user
+if (isset($_POST["deletebook"])) {
 // Prepare a DELETE statement to remove a user from the 'users' table
-$stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+$stmt = $conn->prepare("DELETE FROM books WHERE id = ?");
 // Bind the delete_id parameter to the prepared statement
-$stmt->bind_param("i", $_POST["delete_id"]);
+$stmt->bind_param("i", $_POST["bookid"]);
 // Execute the prepared statement
 $stmt->execute();
 // Close the prepared statement
@@ -48,7 +48,7 @@ $stmt->close();
 }
 
 // Redirect to the same page to prevent form resubmission on page refresh
-header("Location: " . $_SERVER["PHP_SELF"]);
+header("Location: " . 'admin.php');
 exit;
 }
 

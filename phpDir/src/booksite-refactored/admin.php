@@ -58,7 +58,7 @@
                     $description = $book["description"]; ?>
                     <section class="book">
                     
-                    <form class="deleteform" action="deletebook.php" method="post">
+                    <form class="deleteform" action="actions.php" method="post">
                     <input type="hidden" name="bookid" value="<?php print $id; ?>">
                     <input type="submit" name="deletebook" value="Delete" onClick="return confirm(`Are you sure you want to delete <?php print $title ?> ?`)">
                     </form>
