@@ -4,7 +4,15 @@ Site actions using repared statements.
 */
 
 // Start or resume a session
-// session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Check user is logged in
+if(!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+}
 
 // Include the database connection file
 require_once 'db.php';
@@ -37,7 +45,7 @@ $stmt->close();
 
 // If edit_id is set, update the specified user's information
 if (isset($_POST["edit_id"])) {
-// Prepare an UPDATE statement to modify a user's information in the 'users' table
+// Prepare an UPDATE statement to modify a book's information in the 'books' table
 $stmt = $conn->prepare("UPDATE users SET username = ?, password = ? WHERE id = ?");
 // Bind the edit_username, edit_password, and edit_id parameters to the prepared statement
 $stmt->bind_param("ssi", $_POST["edit_username"], $_POST["edit_password"], $_POST["edit_id"]);
@@ -47,10 +55,29 @@ $stmt->execute();
 $stmt->close();
 }
 
-// Redirect to the same page to prevent form resubmission on page refresh
-header("Location: " . 'admin.php');
+// Redirect back to admin.php.
+header("Location: " . $_SERVER["HTTP_REFERER"]);
 exit;
 }
+
+// // Restore original books data from backup file
+// if (isset($_POST['restorebackup'])) {
+//     $backupFile = 'books.sql';
+
+//     $loadDataSql = "LOAD DATA INFILE $backupFile INTO TABLE books";
+
+//     $loadBackupResult = $conn->query($loadDataSql);
+
+//     // Check if the command executed successfully
+//     if ($loadBackupResult === TRUE) {
+//         $_SESSION["restoremessage"] = "Backup restored!";
+//     } else {
+//         // Handle error
+//         echo "Error: " . $conn->error;
+//     }
+//     }
+
+
 
 // Retrieve all books from the 'books' table
 $result = $conn->query("SELECT * FROM books");
@@ -61,4 +88,5 @@ $books = array();
 while ($book = $result->fetch_assoc()) {
 $books[] = $book;
 }
+
 ?>

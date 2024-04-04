@@ -1,19 +1,21 @@
 <?php include 'actions.php';
     // If the user is not logged in, redirect them back to login.php.
 
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
-    // $restoremessage = '';
+    $restoremessage = '';
 
     if(!isset($_SESSION["login"])) {
         header("Location: login.php");
         exit;
     }
 
-    // if(!empty($_SESSION["restoremessage"])){
-    //     $restoremessage = $_SESSION["restoremessage"];
-    //     $_SESSION["restoremessage"] = '';
-    // }
+    if(!empty($_SESSION["restoremessage"])){
+        $restoremessage = $_SESSION["restoremessage"];
+        $_SESSION["restoremessage"] = '';
+    }
 
 ?>
 <!DOCTYPE html>
@@ -42,7 +44,7 @@
         </nav>
         <main>
             <h2>All Books</h2>
-            <!-- <form class="restorebackup" action="restorebackup.php" method="post">
+            <!-- <form class="restorebackup" action="actions.php" method="post">
                     <input type="submit" name="restorebackup" value="Restore Backup">
 
                     </form>
