@@ -19,16 +19,27 @@ require_once 'db.php';
 
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-// If username and password are set, create a new user
-if (isset($_POST["username"]) && isset($_POST["password"])) {
-// Prepare an INSERT statement to add a new user to the 'users' table
-$stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-// Bind the username and password parameters to the prepared statement
-$stmt->bind_param("ss", $_POST["username"], $_POST["password"]);
-// Execute the prepared statement
-$stmt->execute();
-// Close the prepared statement
-$stmt->close();
+// If data fields are set, create a new book
+if (isset($_POST['add-book']) && (!empty($_POST['bookid']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['year']) && !empty($_POST['genre']) && !empty($_POST['description']))) {
+    // In order to protect against cross-site scripting attacks (i.e. basic PHP security), remove HTML tags from all input.
+    $id = strip_tags($_POST['bookid']);
+    $title = strip_tags($_POST['title']);
+    $author = strip_tags($_POST['author']);
+    $year = strip_tags($_POST['year']);
+    $genre = strip_tags($_POST['genre']);
+    $description = strip_tags($_POST['description']);
+    // Prepare an INSERT statement to add a new book to the 'books' table
+    $stmt = $conn->prepare("INSERT INTO books (id, title, description, author, publishing_year, genre ) VALUES (?, ?, ?, ?, ?, ?)");
+    // Bind the username and password parameters to the prepared statement
+    $stmt->bind_param("isssis", $id, $title, $description, $author, $year, $genre);
+    // Execute the prepared statement
+    $stmt->execute();
+    // Close the prepared statement
+    $stmt->close();
+    $message = "Book added!";
+
+} elseif (isset($_POST['add-book']) && (empty($_POST['bookid']) || empty($_POST['title']) || empty($_POST['author']) || empty($_POST['year']) || empty($_POST['genre']) || empty($_POST['description']))) {
+    $message = "Please fill in all fields.";
 }
 
 // If deletebook is set, delete the specified user

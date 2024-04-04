@@ -7,42 +7,7 @@
         exit;
     }
 
-    // Read the file into array variable $books:
-    $json = file_get_contents("books.json");
-    $books = json_decode($json, true);
     $message = '';
-
-    // if the form has been sent, add the book to the data file
-    if (!empty($_POST['bookid']) AND !empty($_POST['title']) AND !empty($_POST['author']) AND !empty($_POST['year']) AND !empty($_POST['genre']) AND !empty($_POST['description'])) {
-        // In order to protect against cross-site scripting attacks (i.e. basic PHP security), remove HTML tags from all input.
-    // There's a function for that. E.g.
-    // $title = strip_tags($_POST["title"]);
-        $id = strip_tags($_POST['bookid']);
-        $title = strip_tags($_POST['title']);
-        $author = strip_tags($_POST['author']);
-        $year = strip_tags($_POST['year']);
-        $genre = strip_tags($_POST['genre']);
-        $description = strip_tags($_POST['description']);
-
-        $newBook = (object) [
-            "id" => $id, 
-            "title" => $title, 
-            "author" => $author, 
-            "publishing_year" => $year, 
-            "genre" => $genre,
-            "description" => $description];
-
-        $books[] = $newBook;
-
-        $message = "Book added!";
-
-        // Once you have added the new book to the variable $books write it into the file.
-    file_put_contents("books.json", json_encode($books));
-
-    } elseif (isset($_POST['add-book']) AND (empty($_POST['bookid']) OR empty($_POST['title']) OR empty($_POST['author']) OR empty($_POST['year']) OR empty($_POST['genre']) OR empty($_POST['description']))) {
-        $message = "Please fill in all fields.";
-    }
-    
     
 ?>
 <!DOCTYPE html>
@@ -71,7 +36,7 @@
         </nav>
         <main>
             <h2>Add a New Book</h2>
-            <form action="addbook.php" method="post">
+            <form action="actions.php" method="post">
                 <p>
                     <label for="bookid">ID:</label>
                     <input type="number" id="bookid" name="bookid">
