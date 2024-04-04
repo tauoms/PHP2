@@ -66,7 +66,7 @@
                     </form>
 
                     <form class="editform" action="editbook.php" method="post">
-                    <input type="hidden" name="bookid" value="<?php print $id; ?>">
+                    <input type="hidden" name="to-edit-id" value="<?php print $id; ?>">
                     <input type="submit" name="editbook" value="Edit">
                     </form>
             <h3><?php print $title; ?></h3>
