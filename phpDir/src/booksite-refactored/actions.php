@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST['bookid'];
         $index = array_search($id, array_column($books, 'id'));
     }
-    if (!empty($_POST['bookid']) AND !empty($_POST['title']) AND !empty($_POST['author']) AND !empty($_POST['year']) AND !empty($_POST['genre']) AND !empty($_POST['description'])) {
+    if (isset($_POST['edit-book']) && !empty($_POST['bookid']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['year']) && !empty($_POST['genre']) && !empty($_POST['description'])) {
         // In order to protect against cross-site scripting attacks (i.e. basic PHP security), remove HTML tags from all input.
         $id = strip_tags($_POST['bookid']);
         $title = strip_tags($_POST['title']);
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: admin.php");
         exit;
 
-    } elseif (isset($_POST['edit-book']) AND (empty($_POST['bookid']) OR empty($_POST['title']) OR empty($_POST['author']) OR empty($_POST['year']) OR empty($_POST['genre']) OR empty($_POST['description']))) {
+    } elseif (isset($_POST['edit-book']) && (empty($_POST['bookid']) || empty($_POST['title']) || empty($_POST['author']) || empty($_POST['year']) || empty($_POST['genre']) || empty($_POST['description']))) {
         $message = "Please fill in all fields.";
     }
 
