@@ -55,8 +55,8 @@ $stmt->execute();
 $stmt->close();
 }
 
-// Redirect back to admin.php.
-header("Location: " . $_SERVER["HTTP_REFERER"]);
+// Redirect back
+header("Location: " . $_SERVER["PHP_SELF"]);
 exit;
 }
 
@@ -79,14 +79,6 @@ exit;
 
 
 
-// Retrieve all books from the 'books' table
-$result = $conn->query("SELECT * FROM books");
 
-// Initialize an array to hold the books data
-$books = array();
-// Fetch each row of user data and add it to the $rows array
-while ($book = $result->fetch_assoc()) {
-$books[] = $book;
-}
 
 ?>
