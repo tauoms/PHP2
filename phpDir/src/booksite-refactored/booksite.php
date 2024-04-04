@@ -1,3 +1,6 @@
+<?php include 'actions.php'
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +36,7 @@
         </nav>
         <main>
             <?php
-             // Read the file into array variable $books:
-             $json = file_get_contents("books.json");
-             $books = json_decode($json, true);
+             
 
              if (isset($_COOKIE['favorites'])) {
                 $favorites = explode(",", $_COOKIE["favorites"]);
