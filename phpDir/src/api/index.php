@@ -27,6 +27,7 @@ switch ($method) {
         $user = json_decode(file_get_contents('php://input'));
         $sql = "INSERT INTO users(id, name, email, mobile, created_at, updated_at) VALUES(null, :name, :email, :mobile, :created_at, :updated_at)";
         $stmt = $connection->prepare($sql);
+        date_default_timezone_set("Europe/Helsinki");
         $created_at = date('Y-m-d-H-i-s');
         $updated_at = date('Y-m-d-H-i-s');
         $stmt->bindParam(':name', $user->name);
