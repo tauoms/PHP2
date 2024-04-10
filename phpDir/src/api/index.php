@@ -27,8 +27,8 @@ switch ($method) {
         $user = json_decode(file_get_contents('php://input'));
         $sql = "INSERT INTO users(id, name, email, mobile, created_at, updated_at) VALUES(null, :name, :email, :mobile, :created_at, :updated_at)";
         $stmt = $connection->prepare($sql);
-        $created_at = date('Y-m-d');
-        $updated_at = date('Y-m-d');
+        $created_at = date('Y-m-d-H-i-s');
+        $updated_at = date('Y-m-d-H-i-s');
         $stmt->bindParam(':name', $user->name);
         $stmt->bindParam(':email', $user->email);
         $stmt->bindParam(':mobile', $user->mobile);
