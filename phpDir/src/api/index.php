@@ -43,4 +43,12 @@ switch ($method) {
         }
         echo json_encode($response);
         break;
+
+        case "GET":
+            $sql = "SELECT * FROM users";
+            $stmt = $connection->prepare($sql);
+            $stmt->execute();
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            echo json_decode($users);
+            break;
 }
