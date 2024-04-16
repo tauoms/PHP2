@@ -8,9 +8,9 @@
         exit;
     }
 
-    $id = $_POST['to-edit-id'];
+    $id = $_POST['to-edit-id'] ?? $_GET['id'];
     $index = array_search($id, array_column($books, 'id'));
-    $message = '';
+    $message = $_SESSION['message'] ?? '';
 
 ?>
 <!DOCTYPE html>

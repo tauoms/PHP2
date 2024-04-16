@@ -65,7 +65,7 @@
                     <input type="submit" name="deletebook" value="Delete" onClick="return confirm(`Are you sure you want to delete <?php print $title ?> ?`)">
                     </form>
 
-                    <form class="editform" action="editbook.php" method="post">
+                    <form class="editform" action="editbook.php?id=<?= $id ?>" method="post">
                     <input type="hidden" name="to-edit-id" value="<?php print $id; ?>">
                     <input type="submit" name="editbook" value="Edit">
                     </form>
