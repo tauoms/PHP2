@@ -1,7 +1,8 @@
 <?php include "functions.php"; 
 
 // Step 2 - Set a cookie that expires in one week
-    setcookie('user', 'User Name', time() + (86400 * 7), '/');
+    setcookie('user', 'User Name', time() + (60*60*24*7));
+
 		// Step 3 - Start a session and set it to value, any value you want.
     session_start();
     $_SESSION['sessionvariable'] = 'capybara';
