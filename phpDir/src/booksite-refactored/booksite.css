@@ -132,6 +132,10 @@ input[type="submit"] {
   margin-right: 6px;
 }
 
+#description {
+  width: 400px;
+}
+
 select {
   padding: 4px;
   border-radius: 8px;
