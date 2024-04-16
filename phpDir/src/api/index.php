@@ -49,6 +49,6 @@ switch ($method) {
             $stmt = $connection->prepare($sql);
             $stmt->execute();
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            echo json_decode($users);
+            echo json_encode($users);
             break;
 }

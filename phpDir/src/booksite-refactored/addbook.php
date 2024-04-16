@@ -7,7 +7,7 @@
         exit;
     }
 
-    $message = '';
+    $message = $_SESSION['message'] ?? '';
     
 ?>
 <!DOCTYPE html>

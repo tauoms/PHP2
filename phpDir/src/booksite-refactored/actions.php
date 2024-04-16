@@ -14,13 +14,15 @@ if(!isset($_SESSION["login"])) {
     exit;
 }
 
+$_SESSION['message'] = '';
+
 // Include the database connection file
 require_once 'db.php';
 
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // If data fields are set, create a new book
+    // ADD: If data fields are set, create a new book
     if (isset($_POST['add-book']) && (!empty($_POST['bookid']) && !empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['year']) && !empty($_POST['genre']) && !empty($_POST['description']))) {
         // In order to protect against cross-site scripting attacks (i.e. basic PHP security), remove HTML tags from all input.
         $id = strip_tags($_POST['bookid']);
@@ -37,13 +39,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
         // Close the prepared statement
         $stmt->close();
-        $message = "Book added!";
+        $_SESSION['message'] = "Book added!";
+
+        // Redirect back
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit;
 
     } elseif (isset($_POST['add-book']) && (empty($_POST['bookid']) || empty($_POST['title']) || empty($_POST['author']) || empty($_POST['year']) || empty($_POST['genre']) || empty($_POST['description']))) {
-        $message = "Please fill in all fields.";
+        $_SESSION['message'] = "Please fill in all fields.";
     }
 
-    // If deletebook is set, delete the specified user
+    // DELETE: If deletebook is set, delete the specified user
     if (isset($_POST["deletebook"])) {
     // Prepare a DELETE statement to remove a user from the 'users' table
     $stmt = $conn->prepare("DELETE FROM books WHERE id = ?");
@@ -55,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
     }
 
-    // If edit-book is set, update the specified user's information
+    // EDIT: If edit-book is set, update the specified user's information
     if (isset($_POST['edit-book'])) {
         $id = $_POST['bookid'];
         $index = array_search($id, array_column($books, 'id'));
@@ -76,14 +82,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
         // Close the prepared statement
         $stmt->close();
-        $message = "Book edited!";
+        $_SESSION['message'] = "Book edited!";
 
-        // Redirect to admin panel
-        header("Location: admin.php");
+        // Redirect back
+        header("Location: " . $_SERVER['HTTP_REFERER']);
         exit;
 
     } elseif (isset($_POST['edit-book']) && (empty($_POST['bookid']) || empty($_POST['title']) || empty($_POST['author']) || empty($_POST['year']) || empty($_POST['genre']) || empty($_POST['description']))) {
-        $message = "Please fill in all fields.";
+        $_SESSION['message'] = "Please fill in all fields.";
     }
 
     // Redirect back
