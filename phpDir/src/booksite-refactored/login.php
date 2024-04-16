@@ -19,14 +19,14 @@
     if (isset($_POST['username']) AND isset($_POST['password'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        if ($username === "nimda" AND $password === "salasana") {
+        if ($username === "demo" AND $password === "demo") {
             $_SESSION['login'] = "OK";
             header("Location: admin.php");
             exit();
         
             // If not correct, show the error message near the form.
             } else {
-                $errorMsg = "Wrong username or password.";
+                $errorMsg = "Wrong username or password." . "<br><br>";
     }
 }
 ?>
@@ -78,8 +78,8 @@
                 <p><input type="submit" name="login" value="Log in"></p>
             </form>
             <p class="credentials">Credentials for demo use<br>
-                username: nimda<br>
-                password: salasana</p>
+                username: demo<br>
+                password: demo</p>
         </main>
     </div>    
 </body>

@@ -5,17 +5,24 @@
         session_start();
     }
 
-    $restoremessage = '';
+    // $restoremessage = '';
+    
+    $message = '';
+    // Bind session message (deleted) to $message
+    if (!empty($_SESSION['message'])) {
+        $message = $_SESSION['message'] ?? '';
+        $_SESSION['message'] = '';
+    }
 
     if(!isset($_SESSION["login"])) {
         header("Location: login.php");
         exit;
     }
 
-    if(!empty($_SESSION["restoremessage"])){
-        $restoremessage = $_SESSION["restoremessage"];
-        $_SESSION["restoremessage"] = '';
-    }
+    // if(!empty($_SESSION["restoremessage"])){
+    //     $restoremessage = $_SESSION["restoremessage"];
+    //     $_SESSION["restoremessage"] = '';
+    // }
 
 ?>
 <!DOCTYPE html>
@@ -47,9 +54,11 @@
             <!-- <form class="restorebackup" action="actions.php" method="post">
                     <input type="submit" name="restorebackup" value="Restore Backup">
 
-                    </form>
-                    <p class="restoremessage">(Revert back to original book list)</p>
+                </form>
+                <p class="restoremessage">(Revert back to original book list)</p>
                     <br> -->
+            <p class="message"><?= $message ?></p>
+
             <?php
                 // This is almost identical to booksite.php (minus the genres). Make sure to print the correct id to the delete form.
                 foreach ($books as $book) {

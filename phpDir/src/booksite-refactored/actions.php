@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['message'] = "Please fill in all fields.";
     }
 
-    // DELETE: If deletebook is set, delete the specified user
+    // DELETE: If deletebook is set, delete the specified book
     if (isset($_POST["deletebook"])) {
     // Prepare a DELETE statement to remove a user from the 'users' table
     $stmt = $conn->prepare("DELETE FROM books WHERE id = ?");
@@ -59,6 +59,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     // Close the prepared statement
     $stmt->close();
+    
+    $_SESSION['message'] = 'Book deleted!';
+    // Redirect back
+    header("Location: " . $_SERVER['HTTP_REFERER']);
+    exit;
     }
 
     // EDIT: If edit-book is set, update the specified user's information
