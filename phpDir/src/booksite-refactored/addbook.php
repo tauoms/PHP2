@@ -7,8 +7,12 @@
         exit;
     }
 
-    $message = $_SESSION['message'] ?? '';
-    
+    $message = '';
+
+    if (!empty($_SESSION['message'])) {
+        $message = $_SESSION['message'] ?? '';
+        $_SESSION['message'] = '';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

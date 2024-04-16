@@ -10,8 +10,13 @@
 
     $id = $_POST['to-edit-id'] ?? $_GET['id'];
     $index = array_search($id, array_column($books, 'id'));
-    $message = $_SESSION['message'] ?? '';
-
+    
+    $message = '';
+    
+    if (!empty($_SESSION['message'])) {
+        $message = $_SESSION['message'] ?? '';
+        $_SESSION['message'] = '';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +84,7 @@
                 </p>
                 <p><input type="submit" name="edit-book" value="Edit Book"></p>
             </form>
-            <p class="message"><?php print $message ?></p>
+            <p class="message"><?= $message ?></p>
         </main>
     </div>    
 </body>
