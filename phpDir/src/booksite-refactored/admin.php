@@ -1,8 +1,5 @@
 <?php include 'actions.php';
 
-
-    // If the user is not logged in, redirect them back to login.php.
-
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -16,6 +13,7 @@
         $_SESSION['message'] = '';
     }
 
+    // If the user is not logged in, redirect them back to login.php.
     if(!isset($_SESSION["login"])) {
         header("Location: login.php");
         exit;
