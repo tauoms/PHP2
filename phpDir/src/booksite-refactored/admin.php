@@ -1,4 +1,6 @@
 <?php include 'actions.php';
+
+
     // If the user is not logged in, redirect them back to login.php.
 
     if (session_status() == PHP_SESSION_NONE) {
@@ -70,21 +72,21 @@
                     <section class="book">
                     
                     <form class="deleteform" action="actions.php" method="post">
-                    <input type="hidden" name="bookid" value="<?php print $id; ?>">
-                    <input type="submit" name="deletebook" value="Delete" onClick="return confirm(`Are you sure you want to delete <?php print $title ?> ?`)">
+                    <input type="hidden" name="bookid" value="<?= $id; ?>">
+                    <input type="submit" name="deletebook" value="Delete" onClick="return confirm(`Are you sure you want to delete <?= $title ?> ?`)">
                     </form>
 
                     <form class="editform" action="editbook.php?id=<?= $id ?>" method="post">
-                    <input type="hidden" name="to-edit-id" value="<?php print $id; ?>">
+                    <input type="hidden" name="to-edit-id" value="<?= $id; ?>">
                     <input type="submit" name="editbook" value="Edit">
                     </form>
             <h3><?php print $title; ?></h3>
             <p class="publishing-info">
-                <span class="author"><?php print $author; ?></span>,
-                <span class="year"><?php print $publishing_year; ?></span>
+                <span class="author"><?= $author; ?></span>,
+                <span class="year"><?= print $publishing_year; ?></span>
             </p>
             <p class="description">
-                <?php print $description; ?>
+                <?= $description; ?>
             </p>
         </section>
 
