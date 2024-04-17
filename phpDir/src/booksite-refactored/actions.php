@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // DELETE: If deletebook is set, delete the specified book
     if (isset($_POST["deletebook"])) {
-    // Prepare a DELETE statement to remove a user from the 'users' table
+    // Prepare a DELETE statement to remove a user from the 'books' table
         $stmt = $conn->prepare("DELETE FROM books WHERE id = ?");
     // Bind the delete_id parameter to the prepared statement
         $stmt->bind_param("i", $_POST["bookid"]);
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // EDIT: If edit-book is set, update the specified user's information
+    // EDIT: If edit-book is set, update the specified book's information
     if (isset($_POST['edit-book'])) {
         $id = $_POST['bookid'];
         $index = array_search($id, array_column($books, 'id'));
