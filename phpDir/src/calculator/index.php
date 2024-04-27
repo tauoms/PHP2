@@ -23,11 +23,17 @@ class Calculation {
                 return $this->int1 - $this->int2;
                 break;
             case "division":
-                return $this->int1 / $this->int2;
+                if ($this->int2 == 0) {
+                    return 'Can not divide by zero.';
+                } else {
+                    return $this->int1 / $this->int2;
+                }
                 break;
             case "multiplication":
                 return $this->int1 * $this->int2;
                 break;
+            default:
+                return 'Something unexpected happened, please try again.';
         }
     }
 
