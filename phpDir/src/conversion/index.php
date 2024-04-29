@@ -32,6 +32,8 @@ class Conversion {
             case "gtokg":
                 return number_format((float)($this->int / 1000), 2, '.', '') . " kg";
                 break;
+            default:
+                return 'Something went wrong. Please try again.';
         }
     }
 
